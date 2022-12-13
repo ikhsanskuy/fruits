@@ -65,7 +65,7 @@ include 'koneksi.php';
                 <?php while ($perproduk = $ambil->fetch_assoc()) { ?>
                     <div class="col-md-3">
                         <div class="thumbnail">
-                            <img src="assets/foto_produk/<?php echo $perproduk['foto_produk']; ?>">
+                            <img src="assets/foto_produk/<?php echo $perproduk['foto_produk']; ?>" width="200" height="200" >
                             <div class="caption text-center">
                                 <h3><?php echo $perproduk['nama_produk']; ?></h3>
                                 <h5>Rp. <?php echo number_format($perproduk['harga_produk']); ?></h5>
@@ -89,8 +89,8 @@ include 'koneksi.php';
         <h3>Angkringan Ceria</h3>
         <p>Hubungi Kami disini</p>
         <ul class="socials">
-            <li><a href="https://api.whatsapp.com/send?phone=+62 895-0160-7377&text=Halo, saya ingin bertanya mengenai produk dari eatee.cereal!"><i class="fa fa-whatsapp"></i></a></li>
-            <li><a href="https://www.instagram.com/eatee.cereal/"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="https://wa.me/6289677978072"><i class="fa fa-whatsapp"></i></a></li>
+            <li><a href="https://www.instagram.com/ceriaangkringan/"><i class="fa fa-instagram"></i></a></li>
 
         </ul>
     </div>
