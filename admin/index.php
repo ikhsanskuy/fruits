@@ -41,7 +41,7 @@ if (!isset($_SESSION['admin'])) {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">Eatee.Cereal</a>
+                <a class="navbar-brand" href="index.php">Angkringan</a>
             </div>
         </nav>
         <!-- /. NAV TOP  -->

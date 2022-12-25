@@ -25,7 +25,7 @@ include 'koneksi.php';
         <div class="row text-center ">
             <div class="col-md-12">
                 <br /><br />
-                <h2> Eatee</h2>
+                <h2> Angkringan Ceria</h2>
                  <br />
             </div>
         </div>
