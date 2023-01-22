@@ -16,7 +16,7 @@ $pecah = $ambil->fetch_assoc();
 		<input type="number" class="form-control" name="harga" value="<?php echo $pecah['harga_produk']; ?>">
 	</div>
 	<div class="form-group">
-		<img src="../assets/foto_produk/<?php echo $pecah['foto_produk'] ?>">
+		<img src="../assets/foto_produk/<?php echo $pecah['foto_produk'] ?>" width="200">
 	</div>
 	<div class="form-group">
 		<label>Ganti Foto</label>
@@ -45,17 +45,6 @@ if (isset($_POST['ubah'])) {
 	if (!empty($lokasifoto)) {
 		move_uploaded_file($lokasifoto, "../assets/foto_produk/$namafoto");
 
-		// $conn->query("UPDATE produk SET nama_produk='$_POST[nama]',
-		// 	harga_produk='$_POST[harga]', foto_produk='$namafoto', deskripsi_produk='$_POST[deskripsi]'
-		// 	WHERE id_produk='$_GET[id]'");
-
-		// $query = mysqli_query($conn, "UPDATE `produk` SET 
-		// `nama_produk` = '$nama_produk',
-		// `harga_produk` = '$harga_produk',
-		// `foto_produk` = '$namafoto',
-		// `deskripsi_produk` = '$deskripsi_produk'
-		// WHERE `id_produk` = '$GET[id]'");
-
 		$query = mysqli_query($conn, "UPDATE `produk` SET 
 		`nama_produk` = '$nama_produk', 
 		`harga_produk` = '$harga_produk', 
@@ -64,21 +53,10 @@ if (isset($_POST['ubah'])) {
 		`stok_produk` = '$stok_produk' 
 		WHERE `id_produk` = '$_GET[id]'");
 	} else {
-		// $conn->query("UPDATE produk SET nama_produk='$_POST[nama]',
-		// 	harga_produk='$_POST[harga]',
-		// 	deskripsi_produk='$_POST[deskripsi]' WHERE id_produk='$_GET[id]'");
-
-		// $query = mysqli_query($conn, "UPDATE `produk` SET 
-		// `nama_produk` = '$nama_produk',
-		// `harga_produk` = '$harga_produk',
-		// `foto_produk` = '$namafoto',
-		// `deskripsi_produk` = '$deskripsi_produk'
-		// WHERE `id_produk` = '$GET[id]'");
 
 		$query = mysqli_query($conn, "UPDATE `produk` SET 
 		`nama_produk` = '$nama_produk', 
 		`harga_produk` = '$harga_produk', 
-		`foto_produk` = '$namafoto', 
 		`deskripsi_produk` = '$deskripsi_produk' 
 		`stok_produk` = '$stok_produk' 
 		WHERE `id_produk` = '$_GET[id]'");
@@ -92,7 +70,6 @@ if (isset($_POST['ubah'])) {
 	} else {
 		echo "<script>alert('Produk Gagal Diubah'); </script>";
 		echo "<script>location='index.php?halaman=produk'; </script>";
-		// header("location:./index.php");
 	}
 }
 

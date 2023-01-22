@@ -3,7 +3,7 @@
 $host   = 'localhost';
 $user   = 'root';
 $pass   = 'root';
-$db     = 'angkringan';
+$db     = 'fruit';
 
 // $host   = 'localhost';
 // $user   = 'user';
