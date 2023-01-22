@@ -65,7 +65,7 @@ include 'koneksi.php';
                 <?php while ($perproduk = $ambil->fetch_assoc()) { ?>
                     <div class="col-md-3">
                         <div class="thumbnail">
-                            <img src="assets/foto_produk/<?php echo $perproduk['foto_produk']; ?>" width="200" height="200" >
+                            <img src="assets/foto_produk/<?php echo $perproduk['foto_produk']; ?> "style="border-radius: 50%; border: 1px solid black;height:200px!important;width:200px!important;" >
                             <div class="caption text-center">
                                 <h3><?php echo $perproduk['nama_produk']; ?></h3>
                                 <h5>Rp. <?php echo number_format($perproduk['harga_produk']); ?></h5>
