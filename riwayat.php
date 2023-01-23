@@ -58,12 +58,12 @@ if (!isset($_SESSION["pelanggan"]) OR empty($_SESSION["pelanggan"]))
 						<a href="nota.php?id=<?php echo $pecah["id_pembelian"] ?>" class="btn btn-info">Nota</a>
 
 						<?php if ($pecah['status_pemesanan']=="pending"): ?>
-							<a href="pembayaran.php?id=<?php echo $pecah["id_pembelian"]; ?>" class="btn btn-success">
+							<a href="pembayaran.php?id=<?php echo $pecah["id_pembelian"]; ?>" class="btn btn-warning">
 								Kirim Bukti Pembayaran
 							</a>
 
 						<?php else: ?>
-						<a href="lihat_pembayaran.php?id=<?php echo $pecah["id_pembelian"]; ?>" class="btn btn-warning">
+						<a href="lihat_pembayaran.php?id=<?php echo $pecah["id_pembelian"]; ?>" class="btn btn-success">
 							Lihat Bukti Pembayaran
 						</a>
 					<?php endif ?>

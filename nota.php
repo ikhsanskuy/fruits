@@ -100,7 +100,7 @@ if ($idpelangganbeli!==$idpelangganlogin)
 				<strong> Go-Pay 08950167377 AN. Muhammad Rafli Sani</strong> <br> <br>
 			</p>
 			<p class="text-danger"> <strong>Mohon Kirim bukti pembayaran max 1 x 24 jam</strong></p>
-			<p class="text-danger"> <strong>Bukti pembayaran dapat dikirim pada riwayat pemesanan</strong> </p>
+			<p class="text-danger"> <strong>Bukti pembayaran dapat dikirim pada <a href="riwayat.php">riwayat pemesanan</a> </strong> </p>
 		</div>
 	</div>
 </div>

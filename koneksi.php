@@ -1,3 +1,3 @@
 <?php
 
-$koneksi = new mysqli("localhost", "root", "root", "eatee");
+$koneksi = new mysqli("localhost", "root", "root", "fruit");

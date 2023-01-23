@@ -6,6 +6,7 @@
 			<th>No</th>
 			<th>Nama</th>
 			<th>Harga</th>
+			<th>Stok</th>
 			<th>Foto</th>
 			<th>Aksi</th>
 		</tr>
@@ -18,6 +19,7 @@
 			<td><?php echo $nomor; ?></td>
 			<td><?php echo $pecah['nama_produk']; ?></td>
 			<td><?php echo $pecah['harga_produk']; ?></td>
+			<td><?php echo $pecah['stok_produk']; ?></td>
 			<td>
 				<img src="../foto_produk/<?php echo $pecah['foto_produk']; ?>" width="200">
 			</td>
