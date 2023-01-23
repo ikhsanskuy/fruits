@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Waktu pembuatan: 10 Okt 2022 pada 11.12
--- Versi server: 10.4.24-MariaDB
--- Versi PHP: 7.4.29
+-- Host: localhost:8889
+-- Waktu pembuatan: 23 Jan 2023 pada 07.57
+-- Versi server: 5.7.34
+-- Versi PHP: 8.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `KNWFRUIT`
+-- Database: `fruit`
 --
 
 -- --------------------------------------------------------
@@ -39,7 +39,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id_admin`, `username`, `password`, `nama_lengkap`) VALUES
-(1, 'rafli', 'rafli', 'Rafli Sani');
+(1, 'admin', 'admin', 'Admin');
 
 -- --------------------------------------------------------
 
@@ -82,9 +82,7 @@ CREATE TABLE `pelanggan` (
 --
 
 INSERT INTO `pelanggan` (`id_pelanggan`, `email_pelanggan`, `password_pelanggan`, `nama_pelanggan`, `telepon_pelanggan`, `alamat_pelanggan`) VALUES
-(1, 'raflisani07@gmail.com', 'rafli', 'Rafli', '089501607377', 'Jl. Abdul Ghani Raya'),
-(2, 'pelanggan@gmail.com', 'pelanggan', 'Pelanggan 1', '0218565187', 'Jl. Pisangan Lama 1'),
-(4, 'AzzamSani@gmail.com', 'azzam02', 'Azzam', '081286859979', 'Jl. Abdul Ghani Raya No. 14');
+(1, 'pelanggan@gmail.com', '123', 'Pelanggan 1', '0218565187', 'Jl. Pisangan Lama 1');
 
 -- --------------------------------------------------------
 
@@ -110,7 +108,10 @@ INSERT INTO `pembayaran` (`id_pembayaran`, `id_pembelian`, `nama`, `bank`, `juml
 (2, 19, 'Rafli', 'BCA', 30000, '2022-05-25', '20220525110318TandaTangan.jpg'),
 (3, 20, 'Rafli', 'BCA', 30000, '2022-05-25', '20220525133755gundar.png'),
 (4, 21, 'Rafli', 'BCA', 40000, '2022-05-29', '20220529090542Screenshot 2022-04-05 103348.png'),
-(5, 26, '', '', 0, '2022-06-21', '20220621093638');
+(5, 26, '', '', 0, '2022-06-21', '20220621093638'),
+(6, 27, 'Pelanggan', 'bca', 20000, '2023-01-23', '20230123065049logo.png'),
+(7, 27, 'pelanggan', 'bca', 20000, '2023-01-23', '20230123070947logo.png'),
+(8, 28, 'pelanggan', 'mandiri', 50000, '2023-01-23', '20230123071255logo.png');
 
 -- --------------------------------------------------------
 
@@ -127,7 +128,7 @@ CREATE TABLE `pemesanan` (
   `nama_kota` varchar(15) NOT NULL,
   `tarif` int(11) NOT NULL,
   `alamat_pengiriman` text NOT NULL,
-  `status_pemesanan` varchar(15) NOT NULL DEFAULT 'pending'
+  `status_pemesanan` varchar(50) NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -135,16 +136,8 @@ CREATE TABLE `pemesanan` (
 --
 
 INSERT INTO `pemesanan` (`id_pembelian`, `id_pelanggan`, `id_ongkir`, `tanggal_pemesanan`, `total_pemesanan`, `nama_kota`, `tarif`, `alamat_pengiriman`, `status_pemesanan`) VALUES
-(17, 2, 1, '2022-05-23', 21000, 'DKI Jakarta', 10000, '', 'pending'),
-(18, 3, 2, '2022-05-23', 25000, 'Luar DKI Jakart', 20000, 'Jl. Kayumanis VI.\r\nNo. 40', 'pending'),
-(19, 1, 1, '2022-05-24', 30000, 'DKI Jakarta', 10000, 'Jl. Kayumanis VI No. 40, 08/05, 0606', 'Pemesanan sedan'),
-(20, 1, 1, '2022-05-24', 30000, 'DKI Jakarta', 10000, 'Jl. Kayumanis VI No. 40', 'Bukti pembayara'),
-(21, 1, 2, '2022-05-25', 40000, 'Luar DKI Jakart', 20000, 'Jl. Kayumanis VI No. 40', 'Bukti pembayara'),
-(22, 1, 2, '2022-05-29', 35050, 'Luar DKI Jakart', 20000, 'Jl. Kayumanis VI.\r\nNo. 40', 'pending'),
-(23, 1, 2, '2022-06-07', 35000, 'Luar DKI Jakart', 20000, 'Jl. Kayumanis VI.\r\nNo. 40', 'pending'),
-(24, 1, 1, '2022-06-07', 27000, 'DKI Jakarta', 10000, 'Jl. Kayumanis VI.\r\nNo. 40', 'pending'),
-(25, 2, 1, '2022-06-21', 59000, 'DKI Jakarta', 10000, 'Jl. Kayumanis VI.\r\nNo. 40', 'pending'),
-(26, 1, 0, '2022-06-21', 6000, '', 0, '', 'Bukti pembayara');
+(27, 1, 1, '2023-01-23', 20000, 'DKI Jakarta', 10000, '', 'Bukti pembayaran terkirim'),
+(28, 1, 3, '2023-01-23', 50000, 'Luar Pulau Jawa', 30000, 'kalimantan', 'Bukti pembayaran terkirim');
 
 -- --------------------------------------------------------
 
@@ -167,31 +160,6 @@ CREATE TABLE `pemesanan_produk` (
 --
 
 INSERT INTO `pemesanan_produk` (`id_pemesanan_produk`, `id_pembelian`, `id_produk`, `jumlah`, `nama`, `harga`, `subharga`) VALUES
-(1, 1, 1, 1, '', 0, 0),
-(2, 1, 1, 1, '', 0, 0),
-(3, 12, 2, 1, '', 0, 0),
-(4, 12, 3, 1, '', 0, 0),
-(5, 12, 4, 1, '', 0, 0),
-(6, 13, 2, 1, '', 0, 0),
-(7, 13, 3, 1, '', 0, 0),
-(8, 13, 4, 1, '', 0, 0),
-(9, 14, 2, 1, '', 0, 0),
-(10, 14, 3, 1, '', 0, 0),
-(11, 15, 2, 1, '', 0, 0),
-(12, 15, 5, 1, '', 0, 0),
-(13, 16, 2, 1, 'Koko Crunch', 5000, 5000),
-(14, 16, 3, 1, 'Pabbles', 6000, 6000),
-(15, 17, 2, 1, 'Koko Crunch', 5000, 5000),
-(16, 17, 3, 1, 'Pabbles', 6000, 6000),
-(17, 0, 4, 1, 'Apple', 10000, 10000),
-(18, 0, 5, 1, 'Susu', 5000, 5000),
-(19, 18, 2, 1, 'Koko Crunch', 5000, 5000),
-(20, 19, 2, 2, 'Koko Crunch', 5000, 5000),
-(21, 19, 4, 1, 'Apple', 10000, 10000),
-(22, 20, 2, 2, 'Koko Crunch', 5000, 5000),
-(23, 20, 4, 1, 'Apple', 10000, 10000),
-(24, 21, 7, 2, 'Reeses Pufs', 5000, 5000),
-(25, 21, 2, 2, 'Koko Crunch', 5000, 5000),
 (26, 22, 4, 1, 'Apple', 10000, 10000),
 (27, 22, 6, 1, 'Bowl', 5050, 5050),
 (28, 23, 2, 1, 'Koko Crunch', 5000, 5000),
@@ -199,7 +167,10 @@ INSERT INTO `pemesanan_produk` (`id_pemesanan_produk`, `id_pembelian`, `id_produ
 (30, 24, 7, 1, 'Reeses Pufs', 5000, 5000),
 (31, 24, 3, 2, 'Pabbles', 6000, 6000),
 (32, 25, 2, 7, 'Koko Crunch', 7000, 7000),
-(33, 26, 3, 1, 'Pabbles', 6000, 6000);
+(33, 26, 3, 1, 'Pabbles', 6000, 6000),
+(34, 27, 3, 1, 'Apel', 10000, 10000),
+(35, 28, 3, 1, 'Apel', 10000, 10000),
+(36, 28, 4, 1, 'Nanas', 10000, 10000);
 
 -- --------------------------------------------------------
 
@@ -221,10 +192,10 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`id_produk`, `nama_produk`, `harga_produk`, `foto_produk`, `deskripsi_produk`, `stok_produk`) VALUES
-(2, 'KokoCrunch', 7000, '1603594163340.jpg', '    Cereal coklat dari KokoCrunch', 20),
-(3, 'Pabbles', 6000, '1603594118163.jpg', 'Cereal Pabbles', 7),
-(4, 'Apple', 10000, 'apple.jpg', 'Cereal apel', 8),
-(7, 'Reeses Pufs', 5000, '1603594192030.jpg', 'Menu baru', 7);
+(2, 'Pisang', 7000, 'pisang.png', ' Buah pisang', 21),
+(3, 'Apel', 10000, 'apel.png', ' Buah semangka', 18),
+(4, 'Nanas', 10000, 'nanas.png', 'Buah nanas', 19),
+(7, 'Straweberry', 5000, 'strawberry.png', 'Buah strawberry', 20);
 
 --
 -- Indexes for dumped tables
@@ -298,25 +269,25 @@ ALTER TABLE `pelanggan`
 -- AUTO_INCREMENT untuk tabel `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `pemesanan`
 --
 ALTER TABLE `pemesanan`
-  MODIFY `id_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT untuk tabel `pemesanan_produk`
 --
 ALTER TABLE `pemesanan_produk`
-  MODIFY `id_pemesanan_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_pemesanan_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT untuk tabel `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
