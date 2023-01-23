@@ -14,22 +14,34 @@
 		<textarea type="text" class="form-control" name="deskripsi" rows="10"></textarea>
 	</div>
 	<div class="form-group">
+		<label>Stok</label>
+		<input type="number" class="form-control" name="stok" rows="10"></input>
+	</div>
+	<div class="form-group">
 		<label>Foto</label>
 		<input type="file" class="form-control" name="foto">
 	</div>
 	<button class="btn btn-primary" name="save">Simpan</button>
 </form>
 <?php 
-	if (isset($_POST['save'])) 
-	{
-		$nama=$_FILES['foto']['name'];
-		$lokasi=$_FILES['foto']['tmp_name'];
-		move_uploaded_file($lokasi, "../foto_produk/".$nama);
-		$koneksi->query("INSERT INTO produk
-			(nama_produk, harga_produk, foto_produk, deskripsi_produk)
-			VALUES('$_POST[nama]','$_POST[harga]','$nama','$_POST[deskripsi]')");
 
-		echo "<div class='alert alert-info'>Data Tersimpan</div>";
-		echo "<meta http-equiv='refresh' content='1;url=index.php?halaman=produk'>";
+	if (isset($_POST['save'])) {
+		$nama = $_FILES['foto']['name'];
+		$lokasi = $_FILES['foto']['tmp_name'];
+		$nama_produk      = ($_POST['nama']);
+		$harga_produk      = ($_POST['harga']);
+		$deskripsi_produk      = ($_POST['deskripsi']);
+		$stok_produk      = ($_POST['stok']);
+		move_uploaded_file($lokasi, "../foto_produk/" . $nama);
+		$query = mysqli_query($koneksi, "INSERT INTO `produk` (`nama_produk`,`harga_produk`,`foto_produk`,`deskripsi_produk`,`stok_produk`) 
+						VALUES ('$nama_produk','$harga_produk','$nama','$deskripsi_produk','$stok_produk')");
+	
+	
+		if ($query) {
+			echo "<div class='alert alert-info'>Data Tersimpan</div>";
+			echo "<meta http-equiv='refresh' content='1;url=index.php?halaman=produk'>";
+		} else {
+			header("location:./index.php");
+		}
 	}
 ?>
