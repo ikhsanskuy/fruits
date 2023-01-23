@@ -25,7 +25,7 @@ include 'koneksi.php';
         <div class="row text-center ">
             <div class="col-md-12">
                 <br /><br />
-                <h2> Angkringan Ceria</h2>
+                <h2> Eatee</h2>
                  <br />
             </div>
         </div>
@@ -34,7 +34,7 @@ include 'koneksi.php';
                   <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                        <strong>Masuk untuk mendapatkan akses sebagai admin</strong>  
+                        <strong>Masuk untuk mendapatkan akses sebagaia admin</strong>  
                             </div>
                             <div class="panel-body">
                                 <form role="form" method="post">
@@ -60,14 +60,13 @@ include 'koneksi.php';
                                     <?php
                                         if(isset($_POST['login']))
                                         {
-                                            $ambil = $koneksi->query("SELECT * FROM `admin` WHERE username='$_POST[user]' AND password ='$_POST[pass]'");
+                                            $ambil = $koneksi->query("SELECT * FROM admin WHERE username='$_POST[user]' AND password ='$_POST[pass]'");
                                             $yangcocok = $ambil->num_rows;
                                             if ($yangcocok==1)
                                             {
                                                 $_SESSION['admin']=$ambil->fetch_assoc();
                                                 echo "<div class='alert alert-info'>Login Sukses</div>";
-                                                // echo "<meta http-equiv='refresh' content='1;url=index.php'>";
-                                                header("location:index.php");
+                                                echo "<meta http-equiv='refresh' content='1;url=index.php'>";
                                             }
                                             else
                                             {
