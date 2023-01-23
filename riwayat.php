@@ -16,7 +16,7 @@ if (!isset($_SESSION["pelanggan"]) OR empty($_SESSION["pelanggan"]))
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Eatee.Cereal </title>
+	<title>KNWFRUIT</title>
 	<link rel="stylesheet" href="admin/assets/css/bootstrap.css">
 </head>
 <body style="font-family: monospace;">

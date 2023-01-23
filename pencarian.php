@@ -54,7 +54,7 @@ while ($pecah = $ambil->fetch_assoc())
 <!-- footer -->
 <div class="footer" style="padding:25px 0">
 	<div class="container">
-		<small">Copyright &copy; 2022 - Eatee.Cereal</small>
+		<small">Copyright &copy; 2022 - KNWFRUIT</small>
 	</div>
 </div>
 

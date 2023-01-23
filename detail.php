@@ -20,7 +20,7 @@ $detail = $ambil->fetch_assoc();
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Eatee.Cereal </title>
+	<title>KNWFRUIT</title>
 	<link rel="stylesheet" href="admin/assets/css/bootstrap.css">
 </head>
 <body>

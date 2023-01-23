@@ -18,7 +18,7 @@ if (!isset($_SESSION['admin']))
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Eatee.Cereal</title>
+    <title>KNWFRUIT</title>
 	<!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
@@ -40,7 +40,7 @@ if (!isset($_SESSION['admin']))
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">Eatee.Cereal</a> 
+                <a class="navbar-brand" href="index.php">KNWFRUIT</a> 
             </div>
         </nav>   
            <!-- /. NAV TOP  -->

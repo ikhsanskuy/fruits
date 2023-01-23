@@ -7,7 +7,7 @@ include 'koneksi.php';
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Eatee.Cereal </title>
+	<title>KNWFRUIT</title>
 	<link rel="stylesheet" href="admin/assets/css/bootstrap.css">
 </head>
 <body>
@@ -16,7 +16,7 @@ include 'koneksi.php';
 
 <!-- Konten -->
 
-<img src="foto_produk/banner.jpg" class="container" style="display:block; margin:auto;" />
+<img src="foto_produk/banner.png" class="container" style="display:block; margin:auto;" />
 <br>
 
 <section class="konten" style="font-family: monospace;">
