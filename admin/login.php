@@ -34,7 +34,7 @@ include 'koneksi.php';
                   <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                        <strong>Masuk untuk mendapatkan akses sebagai adminn</strong>  
+                        <strong>Masuk untuk mendapatkan akses sebagaia admin</strong>  
                             </div>
                             <div class="panel-body">
                                 <form role="form" method="post">
@@ -58,45 +58,22 @@ include 'koneksi.php';
                                     
                                     </form>
                                     <?php
-                                        // if(isset($_POST['login']))
-                                        // {
-                                        //     // $ambil = $koneksi->query("SELECT * FROM admin WHERE username='$_POST[user]' AND password ='$_POST[pass]'");
-                                        //     $ambil = $koneksi->query("SELECT * FROM `admin` WHERE username='$_POST[user]' AND `password` ='$_POST[pass]'");
-                                        //     $yangcocok = $ambil->num_rows;
-                                        //     if ($yangcocok==1)
-                                        //     {
-                                        //         $_SESSION['admin']=$ambil->fetch_assoc();
-                                        //         echo "<div class='alert alert-info'>Login Sukses</div>";
-                                        //         echo "<meta http-equiv='refresh' content='1;url=index.php'>";
-                                        //     }
-                                        //     else
-                                        //     {
-                                        //         echo "<div class='alert alert-danger'>Login Gagal</div>";
-                                        //         echo "<meta http-equiv='refresh' content='1;url=login.php'>";
-                                        //     }
-                                        // }
-                                        
-                                            if (isset($_POST['login'])) {
-
-                                                $username = $_POST['user'];
-                                                $password = $_POST['pass'];
-
-                                                $sql = mysqli_query($koneksi, "SELECT * FROM admin WHERE username = '$username' AND `password` = '$password' ");
-                                                $data = mysqli_fetch_array($sql);
-                                                $cek = mysqli_num_rows($sql);
-
-                                                if ($cek === 1) {
-                                                    $_SESSION['username'] = $username;
-                                                    echo "<script>alert('Selamat datang'); 
-                                                            location.href='index.php';</script>";
-                                                } else {
-                                                    echo "<script>alert('Mohon maaf akun salah'); 
-                                                        location.href='login.php';</script>";
-                                                }
+                                        if(isset($_POST['login']))
+                                        {
+                                            $ambil = $koneksi->query("SELECT * FROM admin WHERE username='$_POST[user]' AND password ='$_POST[pass]'");
+                                            $yangcocok = $ambil->num_rows;
+                                            if ($yangcocok==1)
+                                            {
+                                                $_SESSION['admin']=$ambil->fetch_assoc();
+                                                echo "<div class='alert alert-info'>Login Sukses</div>";
+                                                echo "<meta http-equiv='refresh' content='1;url=index.php'>";
                                             }
-
-
-
+                                            else
+                                            {
+                                                echo "<div class='alert alert-danger'>Login Gagal</div>";
+                                                echo "<meta http-equiv='refresh' content='1;url=login.php'>";
+                                            }
+                                        }
                                     ?>
                             </div>
                            

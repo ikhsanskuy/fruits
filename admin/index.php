@@ -1,21 +1,15 @@
-﻿<?php
+﻿<?php 
 session_start();
 //koneksi
 include 'koneksi.php';
 
-// if (!isset($_SESSION['sesi'])) {
-//     echo "<script>alert('Anda harus Login');</script>";
-//     echo "<script>location='login.php';</script>";
-//     header('location=login.php');
-//     exit();
-$username = $_SESSION['username'];
-if (!isset($username)) {
-    echo "<script>alert('Login dulu ngab');
-        location.href= 'login.php'
-        </script>";
+if (!isset($_SESSION['admin']))
+{
+    echo "<script>alert('Anda harus Login');</script>";
+    echo "<script>location='login.php';</script>";
+    header('location=login.php');
+    exit();
 }
-
-
 
 ?>
 
