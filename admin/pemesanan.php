@@ -23,7 +23,7 @@
 			<td><?php echo $pecah['total_pemesanan']; ?></td>
 			<td>
 				<a href="index.php?halaman=detail&id=<?php echo $pecah['id_pembelian']; ?>" class="btn btn-info">
-				Detail</a>
+				Detaill</a>
 
 				<?php if ($pecah['status_pemesanan']!=="pending"): ?>
 					<a href="index.php?halaman=pembayaran&id=<?php echo $pecah['id_pembelian'] ?>" class="btn btn-success">Bukti</a>
