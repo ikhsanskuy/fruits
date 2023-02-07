@@ -58,22 +58,42 @@ include 'koneksi.php';
                                     
                                     </form>
                                     <?php
-                                        if(isset($_POST['login']))
-                                        {
-                                            $ambil = $koneksi->query("SELECT * FROM admin WHERE username='$_POST[user]' AND password ='$_POST[pass]'");
-                                            $yangcocok = $ambil->num_rows;
-                                            if ($yangcocok==1)
-                                            {
-                                                $_SESSION["admin"]=$ambil->fetch_assoc();
-                                                echo "<div class='alert alert-info'>Login Sukses</div>";
-                                                echo "<meta http-equiv='refresh' content='1;url=index.php'>";
-                                            }
-                                            else
-                                            {
-                                                echo "<div class='alert alert-danger'>Login Gagal</div>";
-                                                echo "<meta http-equiv='refresh' content='1;url=login.php'>";
-                                            }
-                                        }
+                                        // if(isset($_POST['login']))
+                                        // {
+                                        //     $ambil = $koneksi->query("SELECT * FROM admin WHERE username='$_POST[user]' AND password ='$_POST[pass]'");
+                                        //     $yangcocok = $ambil->num_rows;
+                                        //     if ($yangcocok==1)
+                                        //     {
+                                        //         $_SESSION["admin"]=$ambil->fetch_assoc();
+                                        //         echo "<div class='alert alert-info'>Login Sukses</div>";
+                                        //         echo "<meta http-equiv='refresh' content='1;url=index.php'>";
+                                        //     }
+                                        //     else
+                                        //     {
+                                        //         echo "<div class='alert alert-danger'>Login Gagal</div>";
+                                        //         echo "<meta http-equiv='refresh' content='1;url=login.php'>";
+                                        //     }
+                                        // }
+                                        
+if (isset($_POST['login'])) {
+
+    $username = $_POST['user'];
+    $password = $_POST['pass'];
+
+    $sql = mysqli_query($koneksi, "SELECT * FROM `admin` WHERE username = '$username' AND `password` = '$password' ");
+    $data = mysqli_fetch_array($sql);
+    $cek = mysqli_num_rows($sql);
+
+    if ($cek === 1) {
+        $_SESSION['username'] = $username;
+        echo "<script>alert('Selamat datang'); 
+                location.href='index.php';</script>";
+    } else {
+        echo "<script>alert('Mohon maaf akun salah'); 
+            location.href='login.php';</script>";
+    }
+}
+
                                     ?>
                             </div>
                            

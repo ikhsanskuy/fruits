@@ -3,7 +3,7 @@ session_start();
 //koneksi
 include 'koneksi.php';
 
-if (!isset($_SESSION["admin"]))
+if (!isset($_SESSION['username']))
 {
     echo "<script>alert('Anda harus Login');</script>";
     echo "<script>location='login.php';</script>";
