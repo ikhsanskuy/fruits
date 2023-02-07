@@ -83,10 +83,11 @@ include 'koneksi.php';
                                             $yangcocok = $ambil->num_rows;
                                             if ($yangcocok==1)
                                             {
-                                                $_SESSION['admin']=$ambil->fetch_assoc();
+                                                $_SESSION['sesi']=$ambil->fetch_assoc();
                                                 
                                                 echo "<script>alert('Login Berhasil');
                                                 location.href='index.php';</script>";
+
                                             }
                                             else
                                             {
