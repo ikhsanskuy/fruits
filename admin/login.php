@@ -1,7 +1,7 @@
 ﻿<?php
 session_start();
 //koneksi
-include 'koneksi.php';
+include '../koneksi.php';
 ?>
 
 <!DOCTYPE html>

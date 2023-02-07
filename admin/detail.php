@@ -39,6 +39,7 @@ $detail = $ambil->fetch_assoc();
 			<th>Harga</th>
 			<th>Jumlah</th>
 			<th>Subtotal</th>
+			<th>Aksi</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -53,6 +54,9 @@ $detail = $ambil->fetch_assoc();
 			<td>
 				Rp. <?php echo number_format ($pecah['harga_produk']*$pecah['jumlah']); ?>
 			</td>
+			<td><a href="index.php?halaman=pembayaran&id=<?php echo $pecah['id_pembelian'] ?>" class="btn btn-success">Bukti</a>
+			<a href="index.php?halaman=kirim&id=<?php echo $pecah['id_pembelian'] ?>" class="btn btn-primary">Kirim Barang</a>
+		</td>
 		</tr>
 		<?php $nomor++; ?>
 		<?php } ?>
