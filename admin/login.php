@@ -86,7 +86,7 @@ include 'koneksi.php';
                                                 $cek = mysqli_num_rows($sql);
 
                                                 if ($cek === 1) {
-                                                    $_SESSION['user'] = $username;
+                                                    $_SESSION['username'] = $username;
                                                     echo "<script>alert('Selamat datang'); 
                                                             location.href='index.php';</script>";
                                                 } else {
