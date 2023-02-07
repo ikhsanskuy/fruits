@@ -79,7 +79,7 @@ include 'koneksi.php';
                                         
                                         if(isset($_POST['login']))
                                         {
-                                            $ambil = $conn->query("SELECT * FROM `admin` WHERE username='$_POST[user]' AND `password` ='$_POST[pass]'");
+                                            $ambil = $koneksi->query("SELECT * FROM `admin` WHERE username='$_POST[user]' AND `password` ='$_POST[pass]'");
                                             $yangcocok = $ambil->num_rows;
                                             if ($yangcocok==1)
                                             {

@@ -5,8 +5,8 @@ include '../koneksi.php';
 
 if (!isset($_SESSION['admin'])) {
     echo "<script>alert('Anda harus Login');</script>";
-    echo "<script>location='index.php';</script>";
-    header('location=index.php');
+    echo "<script>location='login.php';</script>";
+    header('location=login.php');
     exit();
 }
 
