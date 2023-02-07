@@ -64,7 +64,7 @@ if (!isset($_SESSION['user']))
                         <a href="index.php?halaman=pelanggan"><i class="fa fa-user fa-2x "></i>Pelanggan</a>
                     </li>
                     <li>
-                        <a href="index.php?halaman=pembukuan"><i class="fa fa-book fa-2x "></i>Pembukuan</a>
+                        <a href="pembukuan.php"><i class="fa fa-book fa-2x "></i>Pembukuan</a>
                     </li>
                     <li>
                         <a href="index.php?halaman=logout"><i class="fa fa-sign-out fa-2x "></i>Logout</a>
@@ -123,10 +123,6 @@ if (!isset($_SESSION['user']))
                         elseif ($_GET['halaman']=="kirim") 
                         {
                             include 'kirim.php';
-                        }
-                        elseif ($_GET['halaman']=="pembukuan") 
-                        {
-                            include 'pembukuan.php';
                         }
                     }
                     else
