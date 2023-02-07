@@ -28,6 +28,10 @@
 				<?php if ($pecah['status_pemesanan']!=="pending"): ?>
 					<a href="index.php?halaman=pembayaran&id=<?php echo $pecah['id_pembelian'] ?>" class="btn btn-success">Bukti</a>
 				<?php endif ?>
+
+				<?php 
+				
+				?>
 			</td>
 		</tr>
 		<?php $nomor++; ?>

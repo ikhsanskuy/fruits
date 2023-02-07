@@ -13,8 +13,8 @@
 			<h3>KNWFRUIT</h3>
 			<p>Hubungi Kami disini</p>
 			<ul class="socials">
-				<li><a href="https://api.whatsapp.com/send?phone=+62 812345&text=Halo, saya ingin bertanya mengenai produk dari KNWFRUIT"><i class="fa fa-whatsapp"></i></a></li>
-				<li><a href="https://www.instagram.com/KNWFRUIT/"><i class="fa fa-instagram"></i></a></li>
+				<li><a href="https://api.whatsapp.com/send?phone=+62 813 8154 6017s&text=Halo, saya ingin bertanya mengenai produk dari KNWFRUIT"><i class="fa fa-whatsapp"></i></a></li>
+				<li><a href="https://www.instagram.com/knwfruits/"><i class="fa fa-instagram"></i></a></li>
 				
 			</ul>
 		</div>

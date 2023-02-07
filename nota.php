@@ -94,10 +94,9 @@ if ($idpelangganbeli!==$idpelangganlogin)
 		<div class="alert alert-info">
 			<p>
 				<strong>Silahkan melakukan pembayaran Rp. <?php echo number_format($detail['total_pemesanan']); ?></strong> <br> <br>
-				<strong> BANK BCA 000123456 AN. Muhammad Rafli Sani</strong> <br>
-				<strong> BANK BRI 000123456 AN. Muhammad Rafli Sani</strong> <br>
-				<strong> DANA 089501607377 AN. Muhammad Rafli Sani</strong> <br>
-				<strong> Go-Pay 08950167377 AN. Muhammad Rafli Sani</strong> <br> <br>
+				<strong>Bca 1671313891 Alvin Rivandha</strong> <br>
+				<strong>Gopay 081381546017</strong> <br>
+				<strong>Dana 081381546017</strong> <br><br>
 			</p>
 			<p class="text-danger"> <strong>Mohon Kirim bukti pembayaran max 1 x 24 jam</strong></p>
 			<p class="text-danger"> <strong>Bukti pembayaran dapat dikirim pada <a href="riwayat.php">riwayat pemesanan</a> </strong> </p>
