@@ -9,7 +9,7 @@ include 'koneksi.php';
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Free Bootstrap Admin Template : Binary Admin</title>
+    <title>KNW FRUIT ADMIN PAGE</title>
 	<!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
@@ -64,7 +64,7 @@ include 'koneksi.php';
                                             $yangcocok = $ambil->num_rows;
                                             if ($yangcocok==1)
                                             {
-                                                $_SESSION['admin']=$ambil->fetch_assoc();
+                                                $_SESSION["admin"]=$ambil->fetch_assoc();
                                                 echo "<div class='alert alert-info'>Login Sukses</div>";
                                                 echo "<meta http-equiv='refresh' content='1;url=index.php'>";
                                             }
