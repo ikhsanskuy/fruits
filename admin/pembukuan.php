@@ -120,23 +120,22 @@ if (!isset($_SESSION['user']))
     {
         $from_date = $_GET['from_date'];
         $to_date = $_GET['to_date'];
-
         $query = "SELECT * FROM pemesanan JOIN pelanggan ON pemesanan.id_pelanggan=pelanggan.id_pelanggan WHERE tanggal_pemesanan BETWEEN '$from_date' AND '$to_date' ";
         // $ambil=$koneksi->query("SELECT * FROM pemesanan JOIN pelanggan ON pemesanan.id_pelanggan=pelanggan.id_pelanggan");
         include '../koneksi.php';
         $query_run = mysqli_query($koneksi, $query);
-
         if(mysqli_num_rows($query_run) > 0)
         {
             foreach($query_run as $row)
             {
                 ?>
                 <tr>
+                
                     <td><?php echo $nomor; ?></td>
                     <td><?php echo $row['nama_pelanggan']; ?></td>
                     <td><?php echo $row['tanggal_pemesanan']; ?></td>
                     <td><?php echo $row['status_pemesanan']; ?></td>
-                    <td><?php echo $row['total_pemesanan']; ?></td>
+                    <td>Rp. <?php echo number_format($row['total_pemesanan']); ?>
                 </tr>
                 <?php $nomor++;
             }
@@ -146,9 +145,27 @@ if (!isset($_SESSION['user']))
             echo "No Record Found";
         }
         
-    }
+    
     ?>
 	</tbody>
+    <tbody>
+        <?php 
+    $total_query = "SELECT SUM(total_pemesanan) as total from pemesanan where tanggal_pemesanan BETWEEN '$from_date' AND '$to_date' ";
+    $data = mysqli_query($koneksi, $total_query);
+
+    if ($data) {
+        $result = mysqli_fetch_assoc($data);
+        $total = $result['total'];
+?>
+        <tr>
+            <td colspan="4">total denda</td>
+            <td>Rp. <?= number_format($total) ?></td>
+        </tr>
+<?php
+    }
+}
+?>
+    </tbody>
 </table>
             </div>
              <!-- /. PAGE INNER  -->

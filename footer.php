@@ -19,7 +19,7 @@
 			</ul>
 		</div>
 		<div class="footer-bottom">
-			<p>Copyright &copy; 2022 codeOpacity. designed by <span>KNWFRUIT</span></p>
+			<p>Copyright &copy; 2022 designed by <span>KNWFRUIT</span></p>
 		</div>
 	</footer>
 

@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Waktu pembuatan: 23 Jan 2023 pada 07.57
+-- Host: 127.0.0.1:8889
+-- Waktu pembuatan: 21 Bulan Mei 2023 pada 05.49
 -- Versi server: 5.7.34
--- Versi PHP: 8.0.8
+-- Versi PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -111,7 +111,8 @@ INSERT INTO `pembayaran` (`id_pembayaran`, `id_pembelian`, `nama`, `bank`, `juml
 (5, 26, '', '', 0, '2022-06-21', '20220621093638'),
 (6, 27, 'Pelanggan', 'bca', 20000, '2023-01-23', '20230123065049logo.png'),
 (7, 27, 'pelanggan', 'bca', 20000, '2023-01-23', '20230123070947logo.png'),
-(8, 28, 'pelanggan', 'mandiri', 50000, '2023-01-23', '20230123071255logo.png');
+(8, 28, 'pelanggan', 'mandiri', 50000, '2023-01-23', '20230123071255logo.png'),
+(9, 6, 'ef', 'fe', 214, '2023-05-21', '20230521054223Screenshot 2023-05-07 at 21.28.00.png');
 
 -- --------------------------------------------------------
 
@@ -122,22 +123,34 @@ INSERT INTO `pembayaran` (`id_pembayaran`, `id_pembelian`, `nama`, `bank`, `juml
 CREATE TABLE `pemesanan` (
   `id_pembelian` int(11) NOT NULL,
   `id_pelanggan` int(11) NOT NULL,
-  `id_ongkir` int(11) NOT NULL,
   `tanggal_pemesanan` date NOT NULL,
   `total_pemesanan` int(11) NOT NULL,
-  `nama_kota` varchar(15) NOT NULL,
-  `tarif` int(11) NOT NULL,
+  `provinsi` varchar(255) NOT NULL,
   `alamat_pengiriman` text NOT NULL,
-  `status_pemesanan` varchar(50) NOT NULL DEFAULT 'pending'
+  `status_pemesanan` varchar(50) NOT NULL DEFAULT 'pending',
+  `totalberat` int(11) NOT NULL,
+  `distrik` varchar(255) NOT NULL,
+  `tipe` varchar(255) NOT NULL,
+  `kodepos` varchar(255) NOT NULL,
+  `ekspedisi` varchar(255) NOT NULL,
+  `paket` varchar(255) NOT NULL,
+  `ongkir` int(11) NOT NULL,
+  `estimasi` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `pemesanan`
 --
 
-INSERT INTO `pemesanan` (`id_pembelian`, `id_pelanggan`, `id_ongkir`, `tanggal_pemesanan`, `total_pemesanan`, `nama_kota`, `tarif`, `alamat_pengiriman`, `status_pemesanan`) VALUES
-(27, 1, 1, '2023-01-23', 20000, 'DKI Jakarta', 10000, '', 'Bukti pembayaran terkirim'),
-(28, 1, 3, '2023-01-23', 50000, 'Luar Pulau Jawa', 30000, 'kalimantan', 'Bukti pembayaran terkirim');
+INSERT INTO `pemesanan` (`id_pembelian`, `id_pelanggan`, `tanggal_pemesanan`, `total_pemesanan`, `provinsi`, `alamat_pengiriman`, `status_pemesanan`, `totalberat`, `distrik`, `tipe`, `kodepos`, `ekspedisi`, `paket`, `ongkir`, `estimasi`) VALUES
+(1, 1, '2023-01-23', 20000, '', '', 'Barang Terkirim', 0, '', '', '', '', '', 0, ''),
+(2, 1, '2023-01-23', 50000, '', 'kalimantan', 'Barang Terkirim', 0, '', '', '', '', '', 0, ''),
+(3, 1, '2023-02-07', 20000, '', '', 'pending', 0, '', '', '', '', '', 0, ''),
+(4, 1, '2023-05-20', 7000, 'Bangka Belitung', '', 'pending', 0, '', '', '', '', '', 0, ''),
+(5, 1, '2023-05-21', 38000, 'Bali', 'dsvds', 'pending', 100, 'Badung', 'Kabupaten', '80351', 'pos', 'Pos Reguler', 24000, '4 HARI'),
+(6, 1, '2023-05-21', 44000, 'Bali', 'sv', 'Barang Terkirim', 100, 'Badung', 'Kabupaten', '80351', 'jne', 'Pos Reguler', 24000, '4 HARI'),
+(7, 1, '2023-05-21', 54000, 'Bali', 'siefhjsie', 'pending', 100, 'Badung', 'Kabupaten', '80351', 'tiki', 'REG', 34000, '3'),
+(8, 1, '2023-05-21', 51000, 'Bali', 'jalan bali utara', 'pending', 100, 'Buleleng', 'Kabupaten', '81111', 'tiki', 'REG', 37000, '3');
 
 -- --------------------------------------------------------
 
@@ -170,7 +183,14 @@ INSERT INTO `pemesanan_produk` (`id_pemesanan_produk`, `id_pembelian`, `id_produ
 (33, 26, 3, 1, 'Pabbles', 6000, 6000),
 (34, 27, 3, 1, 'Apel', 10000, 10000),
 (35, 28, 3, 1, 'Apel', 10000, 10000),
-(36, 28, 4, 1, 'Nanas', 10000, 10000);
+(36, 28, 4, 1, 'Nanas', 10000, 10000),
+(37, 0, 3, 1, 'Apel', 10000, 10000),
+(38, 29, 3, 1, 'Apel', 10000, 10000),
+(39, 30, 2, 1, 'Pisang', 7000, 7000),
+(40, 5, 2, 2, 'Pisang', 7000, 7000),
+(41, 6, 3, 2, 'Apel', 10000, 10000),
+(42, 7, 4, 2, 'Nanas', 10000, 10000),
+(43, 8, 2, 2, 'Pisang', 7000, 7000);
 
 -- --------------------------------------------------------
 
@@ -184,18 +204,19 @@ CREATE TABLE `produk` (
   `harga_produk` int(11) NOT NULL,
   `foto_produk` varchar(50) NOT NULL,
   `deskripsi_produk` text NOT NULL,
-  `stok_produk` int(10) NOT NULL
+  `stok_produk` int(10) NOT NULL,
+  `berat` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `produk`
 --
 
-INSERT INTO `produk` (`id_produk`, `nama_produk`, `harga_produk`, `foto_produk`, `deskripsi_produk`, `stok_produk`) VALUES
-(2, 'Pisang', 7000, 'pisang.png', ' Buah pisang', 21),
-(3, 'Apel', 10000, 'apel.png', ' Buah semangka', 18),
-(4, 'Nanas', 10000, 'nanas.png', 'Buah nanas', 19),
-(7, 'Straweberry', 5000, 'strawberry.png', 'Buah strawberry', 20);
+INSERT INTO `produk` (`id_produk`, `nama_produk`, `harga_produk`, `foto_produk`, `deskripsi_produk`, `stok_produk`, `berat`) VALUES
+(2, 'Pisang', 7000, 'pisang.png', ' Buah pisang', 16, 50),
+(3, 'Apel', 10000, 'apel.png', ' Buah semangka', 14, 50),
+(4, 'Nanas', 10000, 'nanas.png', 'Buah nanas', 17, 50),
+(7, 'Straweberry', 5000, 'strawberry.png', 'Buah strawberry', 20, 50);
 
 --
 -- Indexes for dumped tables
@@ -263,31 +284,31 @@ ALTER TABLE `ongkir`
 -- AUTO_INCREMENT untuk tabel `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `pemesanan`
 --
 ALTER TABLE `pemesanan`
-  MODIFY `id_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `pemesanan_produk`
 --
 ALTER TABLE `pemesanan_produk`
-  MODIFY `id_pemesanan_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_pemesanan_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT untuk tabel `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

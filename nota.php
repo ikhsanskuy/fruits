@@ -57,8 +57,8 @@ if ($idpelangganbeli!==$idpelangganlogin)
 	</div>
 	<div class="col-md-4">
 		<h3>Pengiriman</h3>
-		<strong><?php echo $detail['nama_kota'] ?></strong> <br>
-		Ongkos kirim : Rp. <?php echo number_format($detail['tarif']); ?> <br>
+		<strong>Tujuan : <?= $detail['tipe'] ?> <?= $detail['distrik'] ?>,<?= $detail['provinsi'] ?></strong> <br>
+		Ongkos kirim : Rp. <?php echo number_format($detail['ongkir']); ?> <br>
 		Alamat : <?php echo $detail['alamat_pengiriman'] ?>
 	</div>
 </div>
@@ -70,6 +70,7 @@ if ($idpelangganbeli!==$idpelangganlogin)
 			<th>Nama Produk</th>
 			<th>Harga</th>
 			<th>Jumlah</th>
+			<!-- <th>Ongkir</th> -->
 			<th>Subtotal</th>
 		</tr>
 	</thead>
@@ -82,7 +83,9 @@ if ($idpelangganbeli!==$idpelangganlogin)
 			<td><?php echo $pecah['nama']; ?></td>
 			<td>Rp. <?php echo number_format ($pecah['harga']); ?></td>
 			<td><?php echo $pecah['jumlah']; ?></td>
-			<td>Rp. <?php echo number_format($pecah['subharga']); ?></td>
+			<!-- <td><?php echo $pecah['ongkir']; ?></td> -->
+			<!-- <td>Rp. <?php echo number_format($pecah['subharga']); ?></td> -->
+			<td>Rp. <?php echo number_format ($pecah['subharga']*$pecah['jumlah']); ?></td>
 		</tr>
 		<?php $nomor++; ?>
 		<?php } ?>

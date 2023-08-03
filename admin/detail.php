@@ -10,7 +10,7 @@ $detail = $ambil->fetch_assoc();
 	<div class="col-md-4">
 		<h3>Pembelian</h3>
 		<p>
-			<strong>Total : <?php echo $detail['total_pemesanan']; ?></strong> <br>
+			<strong>Total : <?php echo number_format($detail['total_pemesanan']); ?></strong> <br>
 			Tanggal : <?php echo $detail['tanggal_pemesanan']; ?>
 		</p>
 	</div>
@@ -24,9 +24,9 @@ $detail = $ambil->fetch_assoc();
 	<div class="col-md-4">
 		<h3>Pengiriman</h3>
 		<p>
-			<strong><?php echo $detail["nama_kota"]; ?></strong> <br>
-			Tarif : Rp. <?php echo number_format($detail["tarif"]); ?> <br>
-			Alamat : <?php echo $detail["alamat_pengiriman"]; ?>
+		<strong>Tujuan : <?= $detail['tipe'] ?> <?= $detail['distrik'] ?>,<?= $detail['provinsi'] ?></strong> <br>
+		Ongkos kirim : Rp. <?php echo number_format($detail['ongkir']); ?> <br>
+		Alamat : <?php echo $detail['alamat_pengiriman'] ?>
 		</p>
 	</div>
 </div>
