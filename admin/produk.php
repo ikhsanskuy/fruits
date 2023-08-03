@@ -18,7 +18,7 @@
 		<tr>
 			<td><?php echo $nomor; ?></td>
 			<td><?php echo $pecah['nama_produk']; ?></td>
-			<td><?php echo $pecah['harga_produk']; ?></td>
+			<td>Rp. <?php echo number_format($pecah['harga_produk']); ?></td>
 			<td><?php echo $pecah['stok_produk']; ?></td>
 			<td>
 				<img src="../foto_produk/<?php echo $pecah['foto_produk']; ?>" width="200">

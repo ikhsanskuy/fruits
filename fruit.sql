@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:8889
--- Waktu pembuatan: 21 Bulan Mei 2023 pada 05.49
+-- Waktu pembuatan: 03 Agu 2023 pada 06.20
 -- Versi server: 5.7.34
 -- Versi PHP: 8.2.0
 
@@ -39,7 +39,9 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id_admin`, `username`, `password`, `nama_lengkap`) VALUES
-(1, 'admin', 'admin', 'Admin');
+(1, 'admin', 'admin', 'Admin'),
+(2, 'admin1', 'admin1', 'admin1'),
+(3, 'admin2', 'admin2', 'admin2');
 
 -- --------------------------------------------------------
 
@@ -112,7 +114,8 @@ INSERT INTO `pembayaran` (`id_pembayaran`, `id_pembelian`, `nama`, `bank`, `juml
 (6, 27, 'Pelanggan', 'bca', 20000, '2023-01-23', '20230123065049logo.png'),
 (7, 27, 'pelanggan', 'bca', 20000, '2023-01-23', '20230123070947logo.png'),
 (8, 28, 'pelanggan', 'mandiri', 50000, '2023-01-23', '20230123071255logo.png'),
-(9, 6, 'ef', 'fe', 214, '2023-05-21', '20230521054223Screenshot 2023-05-07 at 21.28.00.png');
+(9, 6, 'ef', 'fe', 214, '2023-05-21', '20230521054223Screenshot 2023-05-07 at 21.28.00.png'),
+(10, 9, 'i', 'we', 67000, '2023-08-03', '20230803055343Screenshot 2023-08-03 at 12.53.32.png');
 
 -- --------------------------------------------------------
 
@@ -143,14 +146,11 @@ CREATE TABLE `pemesanan` (
 --
 
 INSERT INTO `pemesanan` (`id_pembelian`, `id_pelanggan`, `tanggal_pemesanan`, `total_pemesanan`, `provinsi`, `alamat_pengiriman`, `status_pemesanan`, `totalberat`, `distrik`, `tipe`, `kodepos`, `ekspedisi`, `paket`, `ongkir`, `estimasi`) VALUES
-(1, 1, '2023-01-23', 20000, '', '', 'Barang Terkirim', 0, '', '', '', '', '', 0, ''),
-(2, 1, '2023-01-23', 50000, '', 'kalimantan', 'Barang Terkirim', 0, '', '', '', '', '', 0, ''),
-(3, 1, '2023-02-07', 20000, '', '', 'pending', 0, '', '', '', '', '', 0, ''),
-(4, 1, '2023-05-20', 7000, 'Bangka Belitung', '', 'pending', 0, '', '', '', '', '', 0, ''),
 (5, 1, '2023-05-21', 38000, 'Bali', 'dsvds', 'pending', 100, 'Badung', 'Kabupaten', '80351', 'pos', 'Pos Reguler', 24000, '4 HARI'),
 (6, 1, '2023-05-21', 44000, 'Bali', 'sv', 'Barang Terkirim', 100, 'Badung', 'Kabupaten', '80351', 'jne', 'Pos Reguler', 24000, '4 HARI'),
 (7, 1, '2023-05-21', 54000, 'Bali', 'siefhjsie', 'pending', 100, 'Badung', 'Kabupaten', '80351', 'tiki', 'REG', 34000, '3'),
-(8, 1, '2023-05-21', 51000, 'Bali', 'jalan bali utara', 'pending', 100, 'Buleleng', 'Kabupaten', '81111', 'tiki', 'REG', 37000, '3');
+(8, 1, '2023-05-21', 51000, 'Bali', 'jalan bali utara', 'pending', 100, 'Buleleng', 'Kabupaten', '81111', 'tiki', 'REG', 37000, '3'),
+(9, 1, '2023-08-03', 67000, 'Bangka Belitung', 'wengireg', 'Bukti pembayaran terkirim', 150, 'Bangka Barat', 'Kabupaten', '33315', 'jne', 'OKE', 46000, '7-8');
 
 -- --------------------------------------------------------
 
@@ -190,7 +190,8 @@ INSERT INTO `pemesanan_produk` (`id_pemesanan_produk`, `id_pembelian`, `id_produ
 (40, 5, 2, 2, 'Pisang', 7000, 7000),
 (41, 6, 3, 2, 'Apel', 10000, 10000),
 (42, 7, 4, 2, 'Nanas', 10000, 10000),
-(43, 8, 2, 2, 'Pisang', 7000, 7000);
+(43, 8, 2, 2, 'Pisang', 7000, 7000),
+(44, 9, 2, 3, 'Pisang', 7000, 7000);
 
 -- --------------------------------------------------------
 
@@ -213,7 +214,7 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`id_produk`, `nama_produk`, `harga_produk`, `foto_produk`, `deskripsi_produk`, `stok_produk`, `berat`) VALUES
-(2, 'Pisang', 7000, 'pisang.png', ' Buah pisang', 16, 50),
+(2, 'Pisang', 7000, 'pisang.png', ' Buah pisang', 13, 50),
 (3, 'Apel', 10000, 'apel.png', ' Buah semangka', 14, 50),
 (4, 'Nanas', 10000, 'nanas.png', 'Buah nanas', 17, 50),
 (7, 'Straweberry', 5000, 'strawberry.png', 'Buah strawberry', 20, 50);
@@ -272,7 +273,7 @@ ALTER TABLE `produk`
 -- AUTO_INCREMENT untuk tabel `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `ongkir`
@@ -290,19 +291,19 @@ ALTER TABLE `pelanggan`
 -- AUTO_INCREMENT untuk tabel `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `pemesanan`
 --
 ALTER TABLE `pemesanan`
-  MODIFY `id_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `pemesanan_produk`
 --
 ALTER TABLE `pemesanan_produk`
-  MODIFY `id_pemesanan_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id_pemesanan_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT untuk tabel `produk`

@@ -158,7 +158,7 @@ if (!isset($_SESSION['user']))
         $total = $result['total'];
 ?>
         <tr>
-            <td colspan="4">total denda</td>
+            <td colspan="4">Total pemasukan</td>
             <td>Rp. <?= number_format($total) ?></td>
         </tr>
 <?php

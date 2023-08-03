@@ -20,7 +20,7 @@
 			<td><?php echo $pecah['nama_pelanggan']; ?></td>
 			<td><?php echo $pecah['tanggal_pemesanan']; ?></td>
 			<td><?php echo $pecah['status_pemesanan']; ?></td>
-			<td><?php echo $pecah['total_pemesanan']; ?></td>
+			<td>Rp. <?php echo number_format($pecah['total_pemesanan']); ?></td>
 			<td>
 				<a href="index.php?halaman=detail&id=<?php echo $pecah['id_pembelian']; ?>" class="btn btn-info">
 				Detail</a>

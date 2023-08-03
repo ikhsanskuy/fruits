@@ -10,7 +10,7 @@ $detail = $ambil->fetch_assoc();
 	<div class="col-md-4">
 		<h3>Pembelian</h3>
 		<p>
-			<strong>Total : <?php echo number_format($detail['total_pemesanan']); ?></strong> <br>
+			<strong>Total : Rp. <?php echo number_format($detail['total_pemesanan']); ?></strong> <br>
 			Tanggal : <?php echo $detail['tanggal_pemesanan']; ?>
 		</p>
 	</div>
